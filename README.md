@@ -124,15 +124,15 @@ __Ruta de creación de videojuegos__: debe contener
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
 - [ ] Videojuego con las siguientes propiedades:
-  - ID: * No puede ser un ID de un videojuego ya existente en la API rawg
-  - Nombre *
-  - Descripción *
-  - Fecha de lanzamiento
-  - Rating
-  - Plataformas *
+  - ID: * No puede ser un ID de un videojuego ya existente en la API rawg //Listo
+  - Nombre * //Listo
+  - Descripción * //Listo
+  - Fecha de lanzamiento //Listo
+  - Rating //Listo
+  - Plataformas * //Listo
 - [ ] Genero con las siguientes propiedades:
-  - ID
-  - Nombre
+  - ID //Listo
+  - Nombre //Listo
 
 La relación entre ambas entidades debe ser de muchos a muchos ya que un videojuego puede pertenecer a varios géneros en simultaneo y, a su vez, un género puede contener múltiples videojuegos distintos. Un ejemplo sería el juego `Counter Strike` pertenece a los géneros Shooter y Action al mismo tiempo. Pero a su vez existen otros videojuegos considerados como Shooter o como Action.
 
