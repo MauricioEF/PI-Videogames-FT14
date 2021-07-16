@@ -1,4 +1,4 @@
-const { Videogame, conn } = require('../../src/db.js');
+const { Videogame,Genre, conn } = require('../../src/db.js');
 const { expect } = require('chai');
 
 describe('Videogame model', () => {
@@ -15,8 +15,16 @@ describe('Videogame model', () => {
           .catch(() => done());
       });
       it('should work when its a valid name', () => {
-        Recipe.create({ name: 'Super Mario Bros' });
+        Videogame.create({ name: 'Super Mario Bros', description:'asdasd',platforms:[{platform:{name:"xbox"}}]});
       });
+      it('should have genres relationated',async ()=>{
+        await Genre.create({name:"genre1"});
+        await Genre.create({name:"genre2"});
+        let game = await Videogame.create({ name: 'Super Mario Bros', description:'asdasd',platforms:[{platform:{name:"xbox"}}]});
+        await game.setGenres([1,2]);
+        const gameWithGenres = await Videogame.findAll({ include: Genre })
+        expect(gameWithGenres[0].dataValues.genres).to.have.length(2);
+      })
     });
   });
 });

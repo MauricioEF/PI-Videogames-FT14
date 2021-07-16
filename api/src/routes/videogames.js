@@ -41,12 +41,7 @@ router.get('/',async(req,res)=>{
             }
         }
         let newArr3 =dbArray.concat(apiArray);
-        //At this point we have exactly 100 results or there are no more results to save, lets paginate it
-        // numPages= Math.ceil(newArr3.length/limit); //how many pages will be with our results.
-        // for(let i=0;i<numPages;i++){
-        //     pages[i]=newArr3.slice(i*15,(i+1)*15);
-        // }
-        // res.status(200).redirect('/videogames/1')
+
         res.status(200).json(newArr3);
     }
     else{
@@ -75,27 +70,9 @@ router.get('/',async(req,res)=>{
         if(newArr3.length>100){
             newArr3 = newArr3.slice(0,100);
         }
-        //At this point we have exactly 100 results or there are no more results to save, lets paginate it
-        // numPages= Math.ceil(newArr3.length/limit); //how many pages will be with our results.
-        // for(let i=0;i<numPages;i++){
-        //     pages[i]=newArr3.slice(i*15,(i+1)*15);
-        // }
-        // res.status(200).redirect('/videogames/1')
         res.status(200).json(newArr3);
     }
 })    
-// }).get('/:pageId',(req,res)=>{
-//     if(numPages===0){
-//         console.log("Redirigido");
-//         return res.status(400).redirect('/videogames/');
-//     }
-//     if(req.params.pageId<0||req.params.pageId>numPages){
-//         return res.status(404).send("Page not found")
-//     }
-//     else{
-//         return res.status(200).json({next:req.params.pageId<numPages?'localhost:3001/videogames/'+(Number.parseInt(req.params.pageId)+1):undefined,result: pages[req.params.pageId-1]});
-//     }
-// })
 
 
 module.exports= router;
