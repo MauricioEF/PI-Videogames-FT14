@@ -23,7 +23,7 @@ const axios = require('axios');
 const { listenerCount } = require('./src/app.js');
 
 // Syncing all the models at once.
-conn.sync({ force: false}).then(() => {
+conn.sync({ force: true}).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

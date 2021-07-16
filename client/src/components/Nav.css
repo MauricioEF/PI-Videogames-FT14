@@ -1,0 +1,18 @@
+.nav{
+    display:flex;
+}
+.nav__brand{
+    width:20%;
+    height:50px;
+    background-color:red;
+}
+.nav__menu{
+    width:60%;
+    height:50px;
+    background-color:blue;
+}
+.nav__search{
+    width:20%;
+    height:50px;
+    background-color:yellow;
+}

@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+.wallpaper{
+    /* background: url('../images/Wallpaper1.jpg'); */
+    background: hsl(204 100% 5%);
+    width:100vw;
+    height:100vh;
+    animation-duration:5s;
+    animation-name:changeBackground;
+    animation-iteration-count: 1;
+    text-align:center;
+}
+.control-image{
+    align-self:center;
+    width:200px;
+    transition:all 2s;
+}
+
+.gradient{
+    position:relative;
+    top:100px;
+    background: linear-gradient(270deg, #ff0000, #0006a2);
+    background-size: 400% 400%;
+    animation: AnimationTitle 5s ease infinite;
+  -webkit-background-clip: text;
+    background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.title{
+    font-family: 'Anton', sans-serif;
+    font-size:75px;
+}
+.start{
+    display:flex;
+    width:200px;
+    height:255px;
+    flex-flow:column;
+    position:relative;
+    top:100px;
+    left:550px;
+}
+.start:hover .start__text{
+    opacity:1;
+    
+}
+.start:hover .control-image{
+    width:250px;
+    filter:grayscale(90%)
+}
+.start__text{
+    opacity:0;
+    font-family: 'Anton', sans-serif;
+    display:inline;
+    font-size:75px;
+    text-decoration:none;
+    transition:opacity 2s;
+    background: linear-gradient(270deg, #ff0000, #0006a2);
+    background-size: 400% 400%;
+    animation: AnimationTitle 5s ease infinite;
+  -webkit-background-clip: text;
+    background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes changeBackground {
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes AnimationTitle {
+    0%{background-position:0% 31%}
+    50%{background-position:100% 70%}
+    100%{background-position:0% 31%}
+}

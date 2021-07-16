@@ -1,0 +1,24 @@
+.gamecard{
+    width:250px;
+    height:300px;
+    display:inline-block;
+    border:1px solid black;
+    text-align:center;
+    padding-top:10px;
+    background-color:cyan;
+    margin:5px;
+    z-index: 0;
+    transition:all 0.5s;
+    font-size:25px;
+}
+.gamecard:hover{
+    width:260px;
+    background-color:orange;
+    font-size:30px;
+}
+
+.gamecard__image{
+    width:230px;
+    height:150px;
+    object-fit: cover;
+}
