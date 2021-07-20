@@ -1,18 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@800&display=swap');
 .nav{
     display:flex;
 }
 .nav__brand{
     width:20%;
     height:50px;
-    background-color:red;
+    font-family: 'Tourney', cursive;
+    background-color:#3d61ff
 }
 .nav__menu{
     width:60%;
     height:50px;
-    background-color:blue;
+    font-family: 'Tourney', cursive;
+    display:flex;
+    justify-content:center;
+    background-color:#3d61ff;
+   
+}
+.nav__menu__item{
+    margin: 15px 30px;
+    color:hsl(204 100% 5%);
+    text-decoration:none;
 }
 .nav__search{
     width:20%;
     height:50px;
-    background-color:yellow;
+    font-family: 'Tourney', cursive;
+    background-color:#3d61ff
+}
+.henry__navtext{
+    font-family: 'Work Sans', sans-serif;
+    color:#FFFF01;
+    position:relative;
+    bottom:20px;
+    left:10px;
+}
+.nav__homelink{
+    text-decoration:none;
 }

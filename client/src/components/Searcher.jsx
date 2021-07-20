@@ -1,25 +1,28 @@
 import React from 'react';
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getGamesAction } from '../redux/videogamesDucks';
-export default function Searcher(){
-    const dispatch= useDispatch();
-    const [search,setSearch]=useState("");
-    function handleChange(e){
+import './Searcher.css';
+export default function Searcher() {
+    const dispatch = useDispatch();
+    const [search, setSearch] = useState("");
+    function handleChange(e) {
         setSearch(e.target.value);
     }
-    function searchGame(game){
+    function searchGame(game) {
         dispatch(getGamesAction(game))
     }
-    function submit(){
+    function submit() {
         searchGame(search);
         setSearch("");
     }
-    useEffect(()=>{
+    useEffect(() => {
         console.log(search);
-    },[search])
-    return(<>
-        <input className="searchinput" onChange={handleChange}/>
-        <input type="submit" onClick={submit}></input>
+    }, [search])
+    return (<>
+        <div className="search">
+            <input className="searchinput" onChange={handleChange} />
+            <input type="submit" className="search-button" value="SEARCH" onClick={submit}></input>
+        </div>
     </>)
 }

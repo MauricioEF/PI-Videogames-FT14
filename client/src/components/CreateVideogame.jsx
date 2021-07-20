@@ -31,7 +31,7 @@ export default function CreateVideogame() {
             setChekedGenres([...checkedGenres, parseInt(e.target.value)]);
         }
         else {
-            var val = checkedGenres.findIndex((genre) => genre == e.target.value);
+            var val = checkedGenres.findIndex((genre) => genre === e.target.value);
             if (val !== -1) {
                 let newArr = [...checkedGenres];
                 if (val === 0) {
@@ -53,7 +53,7 @@ export default function CreateVideogame() {
             setCheckedPlatforms([...checkedPlatforms, { platform: { name: e.target.value } }]);
         }
         else {
-            var search = checkedPlatforms.findIndex((platform) => platform.platform.name == e.target.value);
+            var search = checkedPlatforms.findIndex((platform) => platform.platform.name === e.target.value);
             if (search !== -1) {
                 let platformArray = [...checkedPlatforms];
                 if (search === 0) {

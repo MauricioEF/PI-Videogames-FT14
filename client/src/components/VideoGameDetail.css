@@ -1,0 +1,62 @@
+.detail-panel{
+    background-color: hsl(204 100% 5%);
+}
+.detail-panel__title-panel{
+    padding:25px 0;
+    text-align:center;
+    font-size:20px;
+}
+.detail-panel__title-panel__title{
+    color:#468EE1;
+    font-family: 'Teko', sans-serif;
+    font-size:2em;
+}
+.detail-panel__description{
+    width:500px;
+    margin:auto;
+    text-align:justify;
+    color:white;
+    font-family: 'Teko', sans-serif;
+    font-size:20px;
+}
+.detail-panel__image-panel{
+    text-align:center;
+    margin-bottom:30px;
+    
+}
+.detail-panel__image-panel__image{
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    object-fit: cover;
+}
+#detail-panel__description__platforms{
+    text-align:center;
+    font-size:25px;
+}
+.detail-panel__platform{
+    margin-right:25px;
+}
+.platform-description{
+    display:inline;
+    position:relative;
+    bottom:15px;
+}
+.detail-panel__platforms{
+    font-family: 'Teko', sans-serif;
+    font-size:20px;
+    color:white;
+    display: flex;
+    justify-content:center;
+}
+.list-icon{
+    width:50px;
+    height:50px;
+    filter: brightness(1);
+}
+.detail-panel__rating{
+    font-family: 'Teko', sans-serif;
+    font-size:40px;
+    color:white;
+    text-align:center;
+}

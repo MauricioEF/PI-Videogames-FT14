@@ -12,7 +12,7 @@ function App() {
     <Route exact path='/start'>
       <StartPanel></StartPanel>
     </Route>
-    <Route path='/'>
+    <Route exact path={["/","/videogames","/videogames/:gameId","/videogame/create"]}>
     <Nav></Nav>
     </Route>
     <Route exact path={["/","/videogames"]}>

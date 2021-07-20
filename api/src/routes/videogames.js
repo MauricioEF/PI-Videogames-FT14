@@ -65,7 +65,6 @@ router.get('/',async(req,res)=>{
                 finish=true;
             }
         }
-        
         let newArr3 =dbArray.concat(apiArray);
         if(newArr3.length>100){
             newArr3 = newArr3.slice(0,100);

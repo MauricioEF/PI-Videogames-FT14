@@ -1,26 +1,28 @@
 import React, { useEffect } from 'react';
 import './StartPanel.css';
-import ControlImage from '../images/Control.png';
-import {Link} from 'react-router-dom';
+import HenryStartImage from '../images/henry_start.png';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getGamesAction, getGenresAction} from '../redux/videogamesDucks';
-export default function StartPanel(){
-    const dispatch= useDispatch();
-     useEffect(async ()=>{
+import { getGamesAction, getGenresAction } from '../redux/videogamesDucks';
+export default function StartPanel() {
+    const dispatch = useDispatch();
+    useEffect(async () => {
         await dispatch(getGamesAction());
         await dispatch(getGenresAction());
-    },[])
+    }, [])
     return (
         <>
-        <div className="wallpaper">
-            <div className="gradient">
-                <p className="title">Video games webapp</p>
+            <div className="wallpaper">
+                
+                <div className="gradient">
+                    <p className="title1">Video games</p>
+                </div>
+                <p className="title2">Webapp</p>
+                <Link to="/" className="neon"><span>Start</span></Link>
+                <img src={HenryStartImage} alt="henry start" className="start-henry"></img>
+                <span class="henry-font">HENRY</span>
             </div>
-            <div className="start">
-                <Link to='/'><p className="start__text"> Start </p></Link>
-                <Link to ='/'><img src={ControlImage} alt="control" className="control-image"/></Link>
-            </div>
-        </div>
+
         </>
     )
 }

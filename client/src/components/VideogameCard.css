@@ -1,24 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Tourney:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
 .gamecard{
     width:250px;
     height:300px;
     display:inline-block;
-    border:1px solid black;
     text-align:center;
     padding-top:10px;
-    background-color:cyan;
-    margin:5px;
-    z-index: 0;
-    transition:all 0.5s;
+    background-color:darkgray;
+    color:#012B5C;
+    transition:transform 0.5s;
     font-size:25px;
+    font-family: 'Teko', sans-serif;
+    margin:15px;
+    border-radius:5%;
 }
 .gamecard:hover{
-    width:260px;
-    background-color:orange;
-    font-size:30px;
+    background-color:#468EE1;
+    transform:scale(1.3);
 }
-
+.gamecard__title{
+    overflow-wrap:normal;
+    margin:0;
+}
 .gamecard__image{
     width:230px;
     height:150px;
+    border-radius:10%;
     object-fit: cover;
+    margin-bottom:20px;
+}
+.gamecard__genres{
+    font-size:12px;
 }

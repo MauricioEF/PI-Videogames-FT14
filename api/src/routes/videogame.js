@@ -24,7 +24,6 @@ router.get('/:idgame', async (req, res) => {
     }
 }).post('/create', async (req, res) => {
     const { name, description, releasedate, rating, platforms, genres } = req.body;
-    console.log(platforms);
     if (name && description) {
         var vg = await Videogame.create({
             name: name,

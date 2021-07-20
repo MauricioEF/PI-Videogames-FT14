@@ -1,17 +1,22 @@
 import React from 'react';
 import './Nav.css';
 import { Link } from 'react-router-dom';
-export default function Nav(){
-    return(
+import logo from  '../images/henry_nav.png'
+export default function Nav() {
+    return (
         <div className="nav">
             <div className="nav__brand">
-                <Link to="/">HOME</Link>
+                <Link to="/" className="nav__homelink">
+                <img src={logo} className="nav__brand"></img>
+                <span class="henry__navtext">VIDEO GAMES WEBAPP</span>
+                </Link>
             </div>
             <div className="nav__menu">
-                
+                <Link to="/" className="nav__menu__item">HOME</Link>
+                <Link to="/videogame/create" className="nav__menu__item">CREAR JUEGO</Link>
             </div>
             <div className="nav__search">
-            <Link to="/videogame/create">CREAR JUEGO</Link>
+
             </div>
         </div>
     )

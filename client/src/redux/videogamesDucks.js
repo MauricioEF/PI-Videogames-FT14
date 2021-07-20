@@ -196,10 +196,12 @@ export const filterGamesAction = (filterBy) => async (dispatch, getState) => {
             break;
         case "xbox":
             newArr = newArr.filter(game => {
-                let test = [...game.platforms]
+                let test=[];
+                if(game.platforms){
+                    test = [...game.platforms]
+                }
                 let fit = false;
                 for (let i = 0; i < test.length && !fit; i++) {
-                    console.log(test[i].platform)
                     if (/xbox*/i.test(test[i].platform.name)) {
                         fit = true;
                     }
@@ -215,7 +217,10 @@ export const filterGamesAction = (filterBy) => async (dispatch, getState) => {
             break;
         case "playstation":
             newArr = newArr.filter(game => {
-                let test = [...game.platforms]
+                let test=[];
+                if(game.platforms){
+                    test = [...game.platforms]
+                }
                 let fit = false;
                 for (let i = 0; i < test.length && !fit; i++) {
                     console.log(test[i].platform)
@@ -234,7 +239,10 @@ export const filterGamesAction = (filterBy) => async (dispatch, getState) => {
             break;
         case "nintendo":
             newArr = newArr.filter(game => {
-                let test = [...game.platforms]
+                let test=[];
+                if(game.platforms){
+                    test = [...game.platforms]
+                }
                 let fit = false;
                 for (let i = 0; i < test.length && !fit; i++) {
                     console.log(test[i].platform)
@@ -253,7 +261,10 @@ export const filterGamesAction = (filterBy) => async (dispatch, getState) => {
             break;
         case "pc":
             newArr = newArr.filter(game => {
-                let test = [...game.platforms]
+                let test=[];
+                if(game.platforms){
+                    test = [...game.platforms]
+                }
                 let fit = false;
                 for (let i = 0; i < test.length && !fit; i++) {
                     console.log(test[i].platform)
@@ -289,7 +300,6 @@ export const getGenresAction = () => async (dispatch, getState) => {
 }
 export const createGame = (body) => async (dispatch, getState) => {
     try {
-        console.log(body);
         let res = await axios({
             method: 'post',
             url: 'http://localhost:3001/videogame/create',
