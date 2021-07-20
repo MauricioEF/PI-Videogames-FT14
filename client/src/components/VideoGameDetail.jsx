@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import controller from '../images/controller.png';
 import './VideoGameDetail.css';
+import MarioGif from '../images/mario_gif.gif'
 export default function VideoGameDetail(props) {
     const games = useSelector(store => store.games.gamesArray);
     const [game, setGame] = useState({})
@@ -35,18 +36,20 @@ export default function VideoGameDetail(props) {
             <br /><br /><br /><br />
             <p className="detail-panel__description" id="detail-panel__description__platforms">Plataformas </p>
             <div className="detail-panel__platforms">
-            {
-                (game) !== null && Object.entries(game).length !== 0 ? game.platforms.map(platform =><><div className="detail-panel__platform"><img className="list-icon" src={controller} alt="controller"></img> <p className="platform-description">{platform.platform.name}</p></div></>) : ""
-            }
+                {
+                    (game) !== null && Object.entries(game).length !== 0 ? game.platforms.map(platform => <><div className="detail-panel__platform"><img className="list-icon" src={controller} alt="controller"></img> <p className="platform-description">{platform.platform.name}</p></div></>) : ""
+                }
             </div>
-            <br/>
-            <p style={{textAlign:"center",color:"white", fontFamily:"'Teko', sans-serif", fontSize:"30px"}}>RATING</p>
+            <br />
+            <p style={{ textAlign: "center", color: "white", fontFamily: "'Teko', sans-serif", fontSize: "30px" }}>RATING</p>
             <p className="detail-panel__rating">{(game) !== null && Object.entries(game).length !== 0 ? `${game.rating}` : ""}</p>
             <br></br>
             <p className="detail-panel__description" id="detail-panel__description__platforms">Géneros </p>
-            {
-                (game) !== null && Object.entries(game).length !== 0 ? game.genres.map(genre => <div className="detail-panel__platform"><p className="platform-description">{genre.name}</p></div>) : ""
-            }
+            <div className="detail-panel__platforms">
+                {
+                    (game) !== null && Object.entries(game).length !== 0 ? game.genres.map(genre =><><div><img src={MarioGif} className="list-icon" alt="mario.gif"></img><p className="detail-panel__genre-description">{genre.name}</p></div></>) : ""
+                }
+            </div>
         </div>
     )
 }

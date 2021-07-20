@@ -60,3 +60,7 @@
     color:white;
     text-align:center;
 }
+.detail-panel__genre-description{
+    display:inline;
+    margin-right:40px;
+}
