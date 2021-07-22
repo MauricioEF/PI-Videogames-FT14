@@ -3,6 +3,7 @@
 }
 .game-panel{
     background-color: hsl(204 100% 5%);
+    min-height:100vh;
     display:flex;
     justify-content: center;
     padding-top:45px;
@@ -87,4 +88,12 @@
 }
 .neon-button:hover::after{
    opacity:1;
+}
+.noresults{
+    color:white;
+    font-family: 'Teko', sans-serif;
+    font-size:40px;
+}
+.loadingimage{
+    object-fit:cover;
 }

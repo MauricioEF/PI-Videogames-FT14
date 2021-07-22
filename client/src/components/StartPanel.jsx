@@ -6,21 +6,24 @@ import { useDispatch } from 'react-redux';
 import { getGamesAction, getGenresAction } from '../redux/videogamesDucks';
 export default function StartPanel() {
     const dispatch = useDispatch();
-    useEffect(async () => {
-        await dispatch(getGamesAction());
-        await dispatch(getGenresAction());
+    useEffect(() => {
+        async function fetchData(){
+            await dispatch(getGamesAction());
+            await dispatch(getGenresAction());
+        }
+        fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
             <div className="wallpaper">
-                
                 <div className="gradient">
                     <p className="title1">Video games</p>
                 </div>
                 <p className="title2">Webapp</p>
                 <Link to="/" className="neon"><span>Start</span></Link>
                 <img src={HenryStartImage} alt="henry start" className="start-henry"></img>
-                <span class="henry-font">HENRY</span>
+                <span className="henry-font">HENRY</span>
             </div>
 
         </>

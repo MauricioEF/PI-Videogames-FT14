@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert2';
 //constraints
 const initialState = {
     gamesArray: [],
@@ -289,7 +290,6 @@ export const filterGamesAction = (filterBy) => async (dispatch, getState) => {
 export const getGenresAction = () => async (dispatch, getState) => {
     try {
         const genres = await axios.get("http://localhost:3001/genres/")
-        console.log(genres.data);
         dispatch({
             type: "GET_GENRES",
             payload: genres.data
@@ -312,8 +312,18 @@ export const createGame = (body) => async (dispatch, getState) => {
                 genres: body.genres
             }
         })
+        swal.fire({
+            title:'Success!',
+            type:'success',
+            text:'Game created successfully'
+        })
         dispatch(getGamesAction())
     } catch (err) {
+        swal.fire({
+            icon:'error',
+            title:'Wait what?',
+            text:'Can\'t create the game, fill the required values'
+        })
         console.log("Can't create game: " + err);
     }
 }

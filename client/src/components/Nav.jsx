@@ -7,8 +7,8 @@ export default function Nav() {
         <div className="nav">
             <div className="nav__brand">
                 <Link to="/" className="nav__homelink">
-                <img src={logo} className="nav__brand"></img>
-                <span class="henry__navtext">VIDEO GAMES WEBAPP</span>
+                <img src={logo} className="nav__brand" alt="brand"></img>
+                <span className="henry__navtext">VIDEO GAMES WEBAPP</span>
                 </Link>
             </div>
             <div className="nav__menu">

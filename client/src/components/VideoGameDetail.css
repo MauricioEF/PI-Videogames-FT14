@@ -54,6 +54,11 @@
     height:50px;
     filter: brightness(1);
 }
+.list-icon-mario{
+    width:40px;
+    height:40px;
+    filter: brightness(1);
+}
 .detail-panel__rating{
     font-family: 'Teko', sans-serif;
     font-size:40px;
@@ -62,5 +67,7 @@
 }
 .detail-panel__genre-description{
     display:inline;
-    margin-right:40px;
+    position:relative;
+    bottom:15px;
+    left:10px;
 }

@@ -2,22 +2,26 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import VideogameCard from './VideogameCard';
 import Searcher from './Searcher';
-import { getGamesAction, getNextAction, getPrevAction, sortGamesAction, filterGamesAction } from '../redux/videogamesDucks';
+import { getGamesAction, getNextAction, getPrevAction, sortGamesAction, filterGamesAction,getGenresAction } from '../redux/videogamesDucks';
 import { Link } from 'react-router-dom';
 import './Videogames.css';
+import controller from '../images/loading.gif'
 export default function Videogames() {
     const games = useSelector(store => store.games.page);
     const pages = useSelector(store => store.games.pageLimit);
     const current = useSelector(store => store.games.currentPage);
     const dispatch = useDispatch();
-
+    const [loading,setLoading]=useState(true);
     const [order, setOrder] = useState("");
     const [filter, setFilter] = useState("");
 
-    function startGames() {
+    async function startGames() {
         if (games.length === 0) {
-            dispatch(getGamesAction());
+            await dispatch(getGamesAction());
+            await dispatch(getGenresAction());
+            setLoading(false);
         }
+        setLoading(false);
     }
     async function handleSortingChange(e) {
         await setOrder(e.target.value);
@@ -27,10 +31,13 @@ export default function Videogames() {
     }
     useEffect(() => {
         startGames();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     useEffect(() => {
         dispatch(filterGamesAction(filter));
         dispatch(sortGamesAction(order));
+        console.log(loading);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [order, filter])
 
     return (<>
@@ -65,7 +72,7 @@ export default function Videogames() {
         </div>
         <div className="game-panel">
             {
-                games.length !== 0 ? games.map(game => <Link to={`/videogames/${game.id}`} key={game.id}><VideogameCard name={game.name} image={game.background_image} genres={game.genres}></VideogameCard></Link>) : ""
+               Object.entries(games).length !== 0  && games!==null? games.map(game => <Link to={`/videogames/${game.id}`} key={game.id}><VideogameCard name={game.name} image={game.background_image} genres={game.genres} key={game.id}></VideogameCard></Link>) : !loading?<p className="noresults">No results found</p>:<img src={controller} className="loadingimage"alt="loading"></img>
             }
         </div>
         <div className="pagination">

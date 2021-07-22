@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getGenresAction,createGame} from '../redux/videogamesDucks';
-
+import { getGenresAction, createGame } from '../redux/videogamesDucks';
+import './CreateVideogame.css';
 
 export default function CreateVideogame() {
     const [input, setInput] = useState({
         name: '',
         description: '',
-        releasedate:'',
+        releasedate: '',
         rating: 0,
     })
     const genres = useSelector(store => store.games.genres);
     const dispatch = useDispatch();
     const [checkedGenres, setChekedGenres] = useState([]);
     const [checkedPlatforms, setCheckedPlatforms] = useState([]);
-    const [errors,setErrors] = useState({
-        name:'',
-        description:''
+    const [errors, setErrors] = useState({
+        name: '',
+        description: ''
     })
     function startGenres() {
         if (genres.length === 0) {
@@ -26,7 +26,6 @@ export default function CreateVideogame() {
 
 
     function handleCheckboxChange(e) {
-        console.log(e.target.value);
         if (checkedGenres.length === 0) {
             setChekedGenres([...checkedGenres, parseInt(e.target.value)]);
         }
@@ -76,6 +75,7 @@ export default function CreateVideogame() {
     }
     useEffect(() => {
         startGenres();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -94,7 +94,7 @@ export default function CreateVideogame() {
                     break;
                 }
             case "description":
-                if(e.target.value===""){
+                if (e.target.value === "") {
                     setErrors({ ...errors, [e.target.name]: "La descripción no debe ser vacía" })
                     break;
                 }
@@ -106,38 +106,59 @@ export default function CreateVideogame() {
                 return;
         }
     }
-    
-    function submit(){
-        const body={
-            name:input.name,
-            description:input.description,
-            releasedate:input.releasedate,
-            genres:checkedGenres,
-            rating:input.rating,
-            platforms:checkedPlatforms,
+
+    function submit() {
+        const body = {
+            name: input.name,
+            description: input.description,
+            releasedate: input.releasedate,
+            genres: checkedGenres,
+            rating: input.rating,
+            platforms: checkedPlatforms,
         }
         dispatch(createGame(body));
     }
 
     return (
-        <div>
+        <div className="createvideogame__panel">
             <form>
-                <input name="name" type="text" placeholder="Nombre" onChange={handleInputChange} onBlur={handleErrors}></input>
-                <textarea name="description" rows="10" cols="50"  onChange={handleInputChange} onBlur={handleErrors}></textarea>
-                <input type="date" id="start" name="releasedate" min="1900-01-01" max="2021-12-31" onChange={handleInputChange}></input>
-                <input name="rating" type="range" max="5" step="0.5" onChange={handleInputChange}></input>
-                {
-                    genres.map(genre => <label key={genre.id}>{genre.name}<input type="checkbox" name={genre.id} onChange={handleCheckboxChange} value={genre.id}></input></label>)
-                }
-                <label>Xbox One<input type="checkbox" name="Xbox One" onChange={handlePlatformsChange} value="Xbox One"></input></label>
-                <label>Nintendo Switch<input type="checkbox" name="Nintendo Switch" onChange={handlePlatformsChange} value="Nintendo Switch"></input></label>
-                <label>PlayStation 5<input type="checkbox" name="PlayStation 5" onChange={handlePlatformsChange} value="PlayStation 5"></input></label>
-                <label>PC<input type="checkbox" name="PC" onChange={handlePlatformsChange} value="PC"></input></label>
+                <div className="createvideogame__form-name">
+                    <label htmlFor="name" className="createvideogame__input-label">Title</label>
+                    <input name="name" type="text" onChange={handleInputChange} onBlur={handleErrors}></input>
+                </div>
+                <div className="createvideogame__form-textarea">
+                    <label htmlFor="description" className="createvideogame__input-label" style={{marginBottom:"px"}}>Description</label><br /><br />
+                    <textarea name="description" rows="10" cols="50" onChange={handleInputChange} onBlur={handleErrors}></textarea>
+                </div>
+                <div className="date-range-picker">
+                    <div style={{width:"50%",display:"inline-block",textAlign:"center"}}>
+                        <p className="createvideogame__input-label" style={{marginBottom:"60px"}}>Release Date</p>
+                        <input className="date-range-picker__date" onKeyDown={(e) => e.preventDefault()}type="date" id="start" name="releasedate" min="1900-01-01" max="2021-12-31" onChange={handleInputChange}></input>
+                    </div>
+                    <div style={{width:"50%",display:"inline-block",textAlign:"center"}}>
+                    <p className="createvideogame__input-label">Rating</p><br/>
+                        <input name="rating" className="createvideogame__ratingrange" defaultValue="0" type="range" max="5" step="0.5" onChange={handleInputChange}></input>
+                        <p className="createvideogame__input-label">{input.rating}</p>
+                    </div>
+                </div>
+                <p className="createvideogame__input-label" style={{marginBottom:"60px",textAlign:"center",color:"white"}}>Genres</p>
+                <div className="createvideogame__form-genres">
+                    {
+                        genres.map(genre => <div className="genre-container"><label key={genre.id} className="genre-label">{genre.name}<input type="checkbox"className="checkbox" name={genre.id} onChange={handleCheckboxChange} value={genre.id}></input></label></div>)
+                    }
+                </div>
+                <p className="createvideogame__input-label" style={{marginBottom:"60px",textAlign:"center",color:"white"}}>Platforms</p>
+                <div className="createvideogame__form-platforms">
+                    <div className="form-platforms__platform"><label className="genre-label">Xbox One<input type="checkbox"className="checkbox" name="Xbox One" onChange={handlePlatformsChange} value="Xbox One"></input></label></div>
+                    <div className="form-platforms__platform"><label className="genre-label">Nintendo Switch<input type="checkbox" className="checkbox"name="Nintendo Switch" onChange={handlePlatformsChange} value="Nintendo Switch"></input></label></div>
+                    <div className="form-platforms__platform"><label className="genre-label">PlayStation 5<input type="checkbox"className="checkbox" name="PlayStation 5" onChange={handlePlatformsChange} value="PlayStation 5"></input></label></div>
+                    <div className="form-platforms__platform"><label className="genre-label">PC<input type="checkbox" name="PC"className="checkbox" onChange={handlePlatformsChange} value="PC"></input></label></div>
+                </div>
             </form>
-            <div>
-                <p>{errors.name}</p>
-                <p>{errors.description}</p>
-                {checkedPlatforms.length>0&&errors.name===""&&errors.description===""?<input type="submit" value="Crear juego" onClick={submit}></input>:"Por favor complete los campos"}
+            <div style={{textAlign:"center",paddingTop:"50px"}}>
+                <p className="createvideogame__input-label" style={{marginBottom:"60px",textAlign:"center",color:"white"}}>{errors.name}</p>
+                <p className="createvideogame__input-label" style={{marginBottom:"60px",textAlign:"center",color:"white"}}>{errors.description}</p>
+                {checkedPlatforms.length > 0 && errors.name === "" && errors.description === "" ? <input type="submit" value="Crear juego" className="neon-button" style={{width:"200px",height:"50px",position:"relative",left:"42%",fontSize:"30px"}}onClick={submit}></input> : "Por favor complete los campos"}
             </div>
         </div>
     )

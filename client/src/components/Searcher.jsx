@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getGamesAction } from '../redux/videogamesDucks';
 import './Searcher.css';
@@ -16,9 +16,6 @@ export default function Searcher() {
         searchGame(search);
         setSearch("");
     }
-    useEffect(() => {
-        console.log(search);
-    }, [search])
     return (<>
         <div className="search">
             <input className="searchinput" onChange={handleChange} />
